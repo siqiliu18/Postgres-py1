@@ -50,6 +50,3 @@ Password for user postgres:
   3 | Leo  |  40 | m
 (3 rows)
 ```
-
-https://www.digitalocean.com/community/tutorials/how-to-deploy-postgres-to-kubernetes-cluster
-https://phoenixnap.com/kb/postgresql-kubernetes 
