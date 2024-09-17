@@ -1,0 +1,34 @@
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: py-ps-svc
+# spec:
+#   clusterIP: None
+#   type: ClusterIP
+#   selector:
+#     app: py-ps
+#   ports:
+#     - port: 50088
+#       targetPort: 8085
+# ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-ps-deployment
+spec:
+  selector:
+    matchLabels:
+      app: py-ps
+  template:
+    metadata:
+      labels:
+        app: py-ps
+    spec:
+      # hostNetwork: true
+      containers:
+        - name: py-ps
+          image: py-postgres2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8085
+              # name: py-ps-port

@@ -1,16 +1,17 @@
-"""
-0. postgreSQL installation on macos: https://www.postgresqltutorial.com/postgresql-getting-started/install-postgresql-macos/
-1. pip3 install psycopg2 --break-system-packages
-2. Error: pg_config executable not found.
-3. here: https://www.geeksforgeeks.org/how-to-fix-pg_config-executable-not-found-in-python
-4. pg_config locates at /Library/PostgreSQL/16/bin
-5. export PATH=$PATH:/Library/PostgreSQL/16/bin
-6. re-run pip3 install psycopg2 --break-system-packages
-"""
-
 import psycopg2
 
-conn = psycopg2.connect(host="localhost", dbname="postgres", user="postgres", password="1234", port=5432)
+# host: <svc-name>.<ns-name>.svc.cluster.local if the db locates in another ns
+# - source: https://medium.com/@SabujJanaCodes/building-a-golang-music-api-and-deploying-it-on-k8s-go-mysql-k8s-841612d13479#:~:text=%3Csvc%2Dname%3E.%3Cns%2Dname%3E.svc.cluster.local
+db_params = {
+    "host": "postgres.ps-ns.svc.cluster.local", # k get po -n ps-ns -owide, IP column OR k get endpoints -n ps-ns
+    "database": "postgres",
+    "user": "postgres",
+    "password": "pspwd",
+    "port": 5432
+}
+
+# conn = psycopg2.connect(host="localhost", dbname="postgres", user="postgres", password="1234", port=5432)
+conn = psycopg2.connect(**db_params)
 cur = conn.cursor()
 
 # cur.execute("""CREATE TABLE IF NOT EXISTS person(
