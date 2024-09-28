@@ -1,4 +1,4 @@
-### [Localhost PostgreSQL](https://www.w3schools.com/postgresql/postgresql_getstarted.php)
+### Localhost PostgreSQL ([Resource](https://www.w3schools.com/postgresql/postgresql_getstarted.php))
 1. SQL Shell (purely command line)
 2. pgAdmin4 - table relation diagrams
 
@@ -15,7 +15,7 @@
 1. https://www.digitalocean.com/community/tutorials/how-to-deploy-postgres-to-kubernetes-cluster
 2. https://phoenixnap.com/kb/postgresql-kubernetes
 
-### [Posgres DB in Kubernetes with a Python client example](https://kodekloud.com/blog/deploy-postgresql-kubernetes/):
+### Posgres DB in Kubernetes with a Python client example ([Resource](https://kodekloud.com/blog/deploy-postgresql-kubernetes/)):
 * It mentions that `The hostname of the Postgres Pod. Use the DNS name of the stateful set, which is <statefulset-name>. <headless-service-name>. In our case, it is postgres.postgres.` I've tested it, doesn't seem to work.
 * Found the answer from this [article](https://medium.com/@SabujJanaCodes/building-a-golang-music-api-and-deploying-it-on-k8s-go-mysql-k8s-841612d13479) even though it is demostrating Go and MySQL in different namespaces of Kubernetes.
 
@@ -33,10 +33,10 @@
 1. `k get po -n ps-ns -owide`, IP column OR `k get endpoints -n ps-ns`, and if I sue the IP address for the host variable in the code, it also works. But that step shouldn't be needed in reality.
 2. it covers go interface and json implementation.
 
-#### [Another Golang/PostgreSQL on Kubernetes example](https://levelup.gitconnected.com/deploying-dockerized-golang-api-on-kubernetes-with-postgresql-mysql-d190e27ac09f):
+#### Another Golang/PostgreSQL on Kubernetes example [Source](https://levelup.gitconnected.com/deploying-dockerized-golang-api-on-kubernetes-with-postgresql-mysql-d190e27ac09f):
 1. Need to follow, last time wasn't working
 
-#### [What is hostNetwork in Kubernetes?](https://stackoverflow.com/questions/77110555/what-is-hostnetwork-in-kubernetes)
+#### What is hostNetwork in Kubernetes? [Answer](https://stackoverflow.com/questions/77110555/what-is-hostnetwork-in-kubernetes)
 - If that is set to true, then the app inside the pod will use the localhost address of its host (my macbook local), instead of the container's localhost.
 
 #### command line query
