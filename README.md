@@ -19,6 +19,16 @@
 * It mentions that `The hostname of the Postgres Pod. Use the DNS name of the stateful set, which is <statefulset-name>. <headless-service-name>. In our case, it is postgres.postgres.` I've tested it, doesn't seem to work.
 * Found the answer from this [article](https://medium.com/@SabujJanaCodes/building-a-golang-music-api-and-deploying-it-on-k8s-go-mysql-k8s-841612d13479) even though it is demostrating Go and MySQL in different namespaces of Kubernetes.
 
+### DB restored after pod rollout restart or delete ([resource](https://stackoverflow.com/questions/75223014/postgresql-data-on-k8s-cannot-be-made-persistent))
+* manifest0 is deployment
+* manifest1 is sts
+* **Even with deployment, db comes back up after pod being rollout or delete, then why statefulset?**
+
+### StatufulSet vs Deployment
+1. https://www.youtube.com/watch?v=Vrxr-7rjkvM 
+- For db master-slave architect, data are synced by order, meaning replicas have to be created by order. 
+- The master pod name should not be changed, slave pods need to know its host name so as to link to it. 
+
 #### This [article](https://medium.com/@SabujJanaCodes/building-a-golang-music-api-and-deploying-it-on-k8s-go-mysql-k8s-841612d13479) is very GOOD! Need more study:
 1. `k get po -n ps-ns -owide`, IP column OR `k get endpoints -n ps-ns`, and if I sue the IP address for the host variable in the code, it also works. But that step shouldn't be needed in reality.
 2. it covers go interface and json implementation.
