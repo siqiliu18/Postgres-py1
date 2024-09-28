@@ -60,3 +60,6 @@ Password for user postgres:
   3 | Leo  |  40 | m
 (3 rows)
 ```
+
+#### Aditional Note:
+1. command line way to scale up replicas/pods to a specific number `kubectl scale deployment --replicas=3 postgres`
